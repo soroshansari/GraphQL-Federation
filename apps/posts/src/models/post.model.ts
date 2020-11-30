@@ -16,7 +16,7 @@ export class Post {
   @Field((type) => Int, { nullable: true })
   votes?: number;
 
-  @Field((type) => User, { nullable: true })
+  @Field((type) => User)
   user?: User;
 
   constructor(post: Partial<Post>) {

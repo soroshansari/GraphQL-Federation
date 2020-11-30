@@ -26,6 +26,15 @@
         "tsConfigPath": "apps/users/tsconfig.app.json"
       }
     },
+    "todos": {
+      "type": "application",
+      "root": "apps/todos",
+      "entryFile": "main",
+      "sourceRoot": "apps/todos/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/todos/tsconfig.app.json"
+      }
+    },
     "gateway": {
       "type": "application",
       "root": "apps/gateway",

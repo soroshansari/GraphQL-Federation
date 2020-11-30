@@ -10,6 +10,7 @@ import { BuildServiceModule } from './build-service.module';
           serviceList: [
             { name: 'users', url: 'http://[::1]:3001/graphql' },
             { name: 'posts', url: 'http://[::1]:3002/graphql' },
+            { name: 'todos', url: 'http://[::1]:3003/graphql' },
           ],
         },
         server: {

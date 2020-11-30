@@ -1,4 +1,12 @@
-import { Args, Int, Query, Resolver, ResolveReference } from '@nestjs/graphql';
+import {
+  Args,
+  Int,
+  Query,
+  ResolveField,
+  Resolver,
+  ResolveReference,
+} from '@nestjs/graphql';
+import { GqlUserId } from '../decorators/decorators';
 
 import { User } from '../models/user.model';
 import { UsersService } from '../services/users.service';
@@ -20,5 +28,10 @@ export class UsersResolver {
   @Query((returns) => User, { name: 'user' })
   getUser(@Args('id', { type: () => Int }) id: number): User {
     return this.usersService.findOneById(id);
+  }
+
+  @ResolveField((returns) => String, { name: 'sub' })
+  public getJwtName(@GqlUserId() userId: string): string {
+    return userId;
   }
 }

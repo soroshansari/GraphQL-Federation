@@ -10,7 +10,6 @@ export class UsersResolver {
 
   @ResolveField((of) => [Todo], { name: 'todos' })
   public async getTodos(@Parent() user: User): Promise<Todo[]> {
-    console.log('user.id', user);
     return (await this.httpProvider.request<ITodo[]>(`todos?userId=${user.id}`))
       .data;
   }

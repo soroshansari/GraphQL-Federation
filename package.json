@@ -29,6 +29,7 @@
     "apollo-server-express": "^2.19.0",
     "axios": "^0.21.0",
     "graphql": "^15.4.0",
+    "graphql-query-complexity": "^0.7.2",
     "graphql-tools": "^7.0.2",
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",

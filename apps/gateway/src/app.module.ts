@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
-import { GATEWAY_BUILD_SERVICE, GraphQLGatewayModule } from '@nestjs/graphql';
+import { GATEWAY_BUILD_SERVICE, GraphQLGatewayModule, GraphQLSchemaBuilderModule } from '@nestjs/graphql';
 import { BuildServiceModule } from './build-service.module';
+import { ApolloComplexityPlugin } from './common/plugins/complexity.plugin';
+import { LoggingPlugin } from './common/plugins/logging.plugin';
 
 @Module({
   imports: [
@@ -18,9 +20,10 @@ import { BuildServiceModule } from './build-service.module';
           context: ({ req }) => ({
             jwt: req.headers.authorization,
           }),
+          plugins: [new LoggingPlugin(), new ApolloComplexityPlugin(30)]
         },
       }),
-      imports: [BuildServiceModule],
+      imports: [BuildServiceModule, GraphQLSchemaBuilderModule],
       inject: [GATEWAY_BUILD_SERVICE],
     }),
   ],

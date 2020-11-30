@@ -40,15 +40,18 @@ $ yarn
 # development
 $ yarn start posts
 $ yarn start users
+$ yarn start todos
 $ yarn start gateway
 
 # watch mode
 $ yarn dev posts
 $ yarn dev users
+$ yarn dev todos
 $ yarn dev gateway
 
 # production mode
 $ yarn start:prod posts
 $ yarn start:prod users
+$ yarn start:prod todos
 $ yarn start:prod gateway
 ```

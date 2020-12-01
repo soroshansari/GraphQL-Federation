@@ -1,6 +1,7 @@
 import {
   Args,
   Int,
+  Mutation,
   Query,
   ResolveField,
   Resolver,
@@ -17,17 +18,22 @@ export class UsersResolver {
 
   @ResolveReference()
   resolveReference(reference: { __typename: string; id: string }) {
-    switch (reference.__typename) {
-      case User.name:
-        return this.getUser(Number(reference.id));
-      default:
-        return null;
-    }
+    return this.getUser(Number(reference.id));
+  }
+
+  @Mutation((returns) => User, { name: 'addUser' })
+  addUser(@Args('name') name: string): User {
+    return this.usersService.add(name);
   }
 
   @Query((returns) => User, { name: 'user' })
   getUser(@Args('id', { type: () => Int }) id: number): User {
     return this.usersService.findOneById(id);
+  }
+
+  @Query((returns) => [User], { name: 'users' })
+  getAllUsers(): User[] {
+    return this.usersService.getAll();
   }
 
   @ResolveField((returns) => String, { name: 'sub' })

@@ -9,4 +9,17 @@ export class UsersService {
   findOneById(userId: number): User {
     return this.users.find(({ id }) => id === userId);
   }
+
+  add(name: string): User {
+    const newUser = {
+      id: this.users.length + 1,
+      name,
+    };
+    this.users.push(newUser);
+    return newUser;
+  }
+
+  getAll(): User[] {
+    return this.users;
+  }
 }
